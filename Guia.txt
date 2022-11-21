@@ -1,0 +1,26 @@
+Instalaciones : 
+    - express
+    - dotenv
+    - cors
+    - express validator
+    - @prisma/client
+
+    dependencias-Dev:
+    - typescript
+    - @types/node
+    - @types/express
+    - @types/dotenv
+    - @types/cors
+    - prisma
+    - esbuild-register
+    - nodemon
+
+generar prisma con sqlite
+    - npx prisma init --datasource-provider sqlite
+
+
+generar la conexion con sqlite:
+    - npx prisma db push
+
+agregar data a la bd: 
+    - npx prisma db seed

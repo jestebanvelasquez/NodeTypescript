@@ -1,0 +1,31 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Author {
+  id        Int      @id @default(autoincrement())
+  firstName String
+  lastName  String
+  createAt  DateTime @default(now())
+  updateAt  DateTime @updatedAt
+  book      Book[]
+}
+
+model Book {
+  id            Int      @id @default(autoincrement())
+  title         String
+  createAt      DateTime @default(now())
+  updateAt      DateTime @updatedAt
+  isFiction     Boolean
+  datePublished DateTime
+  authorId      Int
+  author        Author   @relation(fields: [authorId], references: [id], onDelete: Cascade) //si queremos eliminar, que se elimine toda la referencia
+}
